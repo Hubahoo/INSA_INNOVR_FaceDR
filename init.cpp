@@ -22,11 +22,9 @@ bool init(const int &argc, const char** argv, CvCapture* capture, CascadeClassif
 }
 
 bool initArgs(const int &argc, const char** argv, CascadeClassifier &faceCascade){
-
-	//recupération des args
-	
-	faceCascade.load(DEF_CLASSIFIER);
-	return 0;
+	if(faceCascade.load(DEF_CLASSIFIER))
+		return 0;
+	else return -1;
 }
 
 bool initCapture(CvCapture* capture){

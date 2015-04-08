@@ -22,9 +22,7 @@ int main(int argc, char** argv)
 	if(!init(argc,(const char**)argv,capture,faceCascade))
 		return -1;
 
-	while(1){
-		detectFaces(capture,faceCascade,faces);
-	}
+	detectFaces(capture,faceCascade,faces);
 
 	cout << "Succesfully exiting ..." << endl;
 	return 0;
