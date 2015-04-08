@@ -17,13 +17,17 @@ int main(int argc, char** argv)
 	CvCapture* capture;
 	CascadeClassifier faceCascade;
 	vector<Mat> faces;
+	Mat frame;
+	faceCascade.load(DEF_CLASSIFIER);
+	capture= cvCaptureFromCAM(0);
 
+	if(init(argc,(const char**)argv,capture,faceCascade))
+		return 3;
 
-	if(!init(argc,(const char**)argv,capture,faceCascade))
-		return -1;
-
-	detectFaces(capture,faceCascade,faces);
-
+	while(1){
+		detectFaces(capture,faceCascade,faces);
+	}
+	
 	cout << "Succesfully exiting ..." << endl;
 	return 0;
 }

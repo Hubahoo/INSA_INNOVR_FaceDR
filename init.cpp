@@ -11,12 +11,16 @@ using namespace std;
 using namespace cv;
 
 bool init(const int &argc, const char** argv, CvCapture* capture, CascadeClassifier &faceCascade){
-	capture= cvCaptureFromCAM(0);
+	/*capture= cvCaptureFromCAM(0);
 	if(!initArgs(argc,argv,faceCascade))
 		return -1;
 
 	if(!initCapture(capture))
 		return -1;
+
+	return 0;*/
+	//faceCascade.load(DEF_CLASSIFIER);
+	//capture= cvCaptureFromCAM(0);
 
 	return 0;
 }
