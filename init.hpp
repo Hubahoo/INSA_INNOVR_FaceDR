@@ -6,7 +6,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 
 #define DEF_CLASSIFIER "haarcascades/haarcascade_frontalface_alt2.xml"
-#define DEF_SCALE 3
+#define DEF_SCALE 1.2
 
 using namespace cv;
 
