@@ -26,7 +26,6 @@ int main(int argc, char** argv)
 
 	while(1){
 		detectFaces(capture,faceCascade,faces);
-        for(int i=0;i<faces.size();i++) imshow("face "+i,faces[i]);
     }
 
 	cout << "Succesfully exiting ..." << endl;
