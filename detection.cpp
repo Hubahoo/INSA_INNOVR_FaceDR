@@ -40,3 +40,5 @@ int detectFaces(CvCapture* capture,CascadeClassifier faceCascade,vector<Mat> &fa
     waitKey(10);
 	return 0;
 }
+
+
