@@ -1,0 +1,10 @@
+#Untracked files
+
+/Release/*
+/Debug/*
+
+/CMakeCache.txt
+/CMakeFikes/
+/cmake_install.cmake
+/Makefile
+
