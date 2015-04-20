@@ -6,7 +6,9 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
-#find_package( OpenCV REQUIRED )
+find_package(OpenCV REQUIRED)
+find_package(Boost REQUIRED)
+
 
 include_directories(
 	/usr/include/
@@ -18,13 +20,13 @@ link_directories(
 )
 
 add_executable(
-	FaceRecognition
+	FaceFramboise
 
 	main.cpp
-	init.hpp
-	init.cpp
-	detection.hpp
-	detection.cpp
+#	init.hpp
+#	init.cpp
+#	detection.hpp
+#	detection.cpp
 	FaceRecognition.cpp
 	Histogram.hpp
 	Histogram.cpp
@@ -34,21 +36,11 @@ add_executable(
 	Person.cpp
 )
 
-
 target_link_libraries(
-	FaceRecognition
+	FaceFramboise
 
 	libboost_serialization.so
 	libsqlite3.so
-	
-	libopencv_core.so
-	libopencv_highgui.so
-	libopencv_imgproc.so
-	libopencv_objdetect.so
-	libopencv_imgcodecs.so
+	${OpenCV_LIBS}
 )
-
-#target_link_libraries( FaceFramboise ${OpenCV_LIBS} )
-
-
 

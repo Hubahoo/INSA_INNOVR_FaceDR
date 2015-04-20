@@ -9,7 +9,6 @@ Person::Person()
 {
 	this->firstname = "";
 	this->lastname = "";
-	//ajouter initilisation histogram
 }
 
 Person::Person(std::string firstname, std::string lastname, Histogram h)
@@ -32,3 +31,4 @@ std::string Person::toString(){
 	
 	return ss.str();
 }
+

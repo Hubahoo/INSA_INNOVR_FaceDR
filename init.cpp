@@ -7,8 +7,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-using namespace cv;
 
 bool init(const int &argc, const char** argv, CvCapture* capture, CascadeClassifier &faceCascade){
 	/*capture= cvCaptureFromCAM(0);

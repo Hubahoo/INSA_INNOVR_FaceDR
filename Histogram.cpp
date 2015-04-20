@@ -180,3 +180,5 @@ unsigned char Histogram::computeLBP(cv::Mat image, int x, int y)
 
 	return lbp;
 }
+
+

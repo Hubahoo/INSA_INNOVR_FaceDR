@@ -4,7 +4,10 @@
 /Debug/*
 
 /CMakeCache.txt
-/CMakeFikes/
+/CMakeFikes/*
 /cmake_install.cmake
 /Makefile
+/*~
+
+/Doxygen/latex/*
 

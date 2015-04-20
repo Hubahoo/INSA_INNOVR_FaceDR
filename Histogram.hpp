@@ -46,3 +46,5 @@ private:
 
 
 #endif //HISTOGRAM.HPP
+
+

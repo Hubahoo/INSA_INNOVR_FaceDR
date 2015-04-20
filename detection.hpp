@@ -5,9 +5,8 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-using namespace std;
-using namespace cv;
 
-int detectFaces(CvCapture* capture,CascadeClassifier faceCascade,vector<Mat> &faces);
+int detectFaces(CvCapture* capture, CascadeClassifier faceCascade, std::vector<Mat> &faces);
 
 #endif //_DETECTION_HPP_INCLUDED
+

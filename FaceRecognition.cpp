@@ -12,7 +12,7 @@
 #include "Person.hpp"
 
 
-int main (int argc, char *argv[])
+int FaceRecognition (int argc, char *argv[])
 {
 	std::cout << "FaceRecognition: start" << std::endl;
 
