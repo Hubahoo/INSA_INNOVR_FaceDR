@@ -7,7 +7,9 @@
 /CMakeFikes/*
 /cmake_install.cmake
 /Makefile
+
 /*~
+/src/*~
 
 /Doxygen/latex/*
 
