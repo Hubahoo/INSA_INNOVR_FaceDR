@@ -1,11 +1,14 @@
 #include <iostream>
+#include <vector>
+#include <opencv2/objdetect/objdetect.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "detection.hpp"
-#include "init.hpp"
 
-
-int detectFaces(CvCapture* capture, cv::CascadeClassifier faceCascade, std::vector<cv::Mat> &faces){
-	cv::Mat frame= cvQueryFrame(capture);
+int detectFaces(cv::Mat frame, cv::CascadeClassifier faceCascade, std::vector<cv::Mat> &faces)
+{
+/*
 	std::vector<Rect> faces_rec;
 	if(frame.empty()) return -1;
 
@@ -35,7 +38,7 @@ int detectFaces(CvCapture* capture, cv::CascadeClassifier faceCascade, std::vect
 	
 	imshow("detection", frame);
 
-	waitKey(10);
+	waitKey(10);*/
 	return 0;
 }
 

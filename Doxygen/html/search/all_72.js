@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['r',['R',['../class_histogram.html#a4d4e694f51569c8600a7d3ab6592ccb4',1,'Histogram']]],
-  ['region_5fheight',['REGION_HEIGHT',['../class_histogram.html#ac0ead3dc65b1133b8f06728ea1108a52',1,'Histogram']]],
-  ['region_5fwidth',['REGION_WIDTH',['../class_histogram.html#a6630fa80a3ec5a0c21a0197d6f632bc1',1,'Histogram']]]
+  ['r',['R',['../define_8hpp.html#a5c71a5e59a53413cd6c270266d63b031',1,'define.hpp']]],
+  ['recognition_2ecpp',['recognition.cpp',['../recognition_8cpp.html',1,'']]],
+  ['recognition_2ehpp',['recognition.hpp',['../recognition_8hpp.html',1,'']]],
+  ['recognitionfaces',['recognitionFaces',['../recognition_8cpp.html#a0750d2e93f6ed49257f09303489b2c6e',1,'recognitionFaces(Gallery g, std::vector&lt; cv::Mat &gt; faces):&#160;recognition.cpp'],['../recognition_8hpp.html#a0750d2e93f6ed49257f09303489b2c6e',1,'recognitionFaces(Gallery g, std::vector&lt; cv::Mat &gt; faces):&#160;recognition.cpp']]],
+  ['region_5fheight',['REGION_HEIGHT',['../define_8hpp.html#ac1c7a5f4f615fb2fe0705576bafaeee0',1,'define.hpp']]],
+  ['region_5fwidth',['REGION_WIDTH',['../define_8hpp.html#adc21ac0ef8dfc314e1c0b604483fc635',1,'define.hpp']]]
 ];

@@ -105,9 +105,10 @@ $(document).ready(function(){initNavTree('detection_8hpp.html','');});
 <div class="title">detection.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;opencv2/objdetect/objdetect.hpp&quot;</code><br/>
-<code>#include &quot;opencv2/highgui/highgui.hpp&quot;</code><br/>
-<code>#include &quot;opencv2/imgproc/imgproc.hpp&quot;</code><br/>
+<div class="textblock"><code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;opencv2/objdetect/objdetect.hpp&gt;</code><br/>
+<code>#include &lt;opencv2/highgui/highgui.hpp&gt;</code><br/>
+<code>#include &lt;opencv2/imgproc/imgproc.hpp&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for detection.hpp:</div>
 <div class="dyncontent">
@@ -127,18 +128,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acb5972e392e0a17a07a3a8148725330b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="detection_8hpp.html#acb5972e392e0a17a07a3a8148725330b">detectFaces</a> (CvCapture *capture, cv::CascadeClassifier faceCascade, std::vector&lt; cv::Mat &gt; &amp;faces)</td></tr>
+<tr class="memitem:a95f62bcdede14efec240eca882d3a79f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="detection_8hpp.html#a95f62bcdede14efec240eca882d3a79f">detectFaces</a> (cv::Mat frame, cv::CascadeClassifier faceCascade, std::vector&lt; cv::Mat &gt; &amp;faces)</td></tr>
 </table>
 <h2>Function Documentation</h2>
-<a class="anchor" id="acb5972e392e0a17a07a3a8148725330b"></a>
+<a class="anchor" id="a95f62bcdede14efec240eca882d3a79f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int detectFaces </td>
           <td>(</td>
-          <td class="paramtype">CvCapture *&#160;</td>
-          <td class="paramname"><em>capture</em>, </td>
+          <td class="paramtype">cv::Mat&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -168,7 +169,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="detection_8hpp.html">detection.hpp</a></li>
-    <li class="footer">Generated on Tue Apr 21 2015 13:28:46 for FaceFramboise by
+    <li class="footer">Generated on Tue Apr 21 2015 18:49:56 for FaceFramboise by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>
