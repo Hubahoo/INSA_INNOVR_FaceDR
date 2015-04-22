@@ -24,3 +24,23 @@ target_link_libraries(
 	${OpenCV_LIBS}
 )
 
+add_executable(
+	BuildDatabase
+
+	BuildDatabase.cpp
+	Histogram.hpp
+	Histogram.cpp
+	Person.hpp
+	Person.cpp
+	Gallery.hpp
+	Gallery.cpp
+)
+
+target_link_libraries(
+	BuildDatabase
+
+	libboost_serialization.so
+	libsqlite3.so
+	${OpenCV_LIBS}
+)
+

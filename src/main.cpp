@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	
 	cout << "FaceFramboise: loading the faces database ..." << endl;
 	Gallery gallery; // Load the database of the known faces in a Gallery object
-	
+	cout << "Debug : gallery loaded" << endl;
 	if(argc == 1){
 		while(1){
 			// Load the image from the camera
@@ -43,11 +43,15 @@ int main(int argc, char *argv[])
 		frame = cv::imread(argv[1]);
 		cout << "FaceFramboise: image loaded" << endl;
 		
+		/*
 		cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
 		imshow("Display window", frame);
-		cv::waitKey(0);
+		cv::waitKey(0);*/
 		
+		cout << "FaceFramboise: detecting the faces ..." << endl;
 		detectFaces(frame, faceCascade, faces);
+		
+		cout << "FaceFramboise: recognition of the faces ..." << endl;
 		recognitionFaces(gallery, faces);
 	}
 	else{

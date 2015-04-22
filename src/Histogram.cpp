@@ -28,7 +28,7 @@ Histogram::Histogram(cv::Mat image)
 		}
 	}
 	
-	std::cout << "FaceRecognition: computing Local Binary Patterns ..." << std::endl;
+	std::cout << "FaceFramboise: computing Local Binary Patterns ..." << std::endl;
 	
 	for (int i = R ; i < width - R ; i++){
 		for(int j = R ; j < height - R ; j++){

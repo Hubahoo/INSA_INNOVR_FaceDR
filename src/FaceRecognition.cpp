@@ -21,8 +21,5 @@
 				oa << h;
 			}*/
 			
-			
-			Person closestPerson = gallery.search(p); //Research the closest person in the gallery
-			
 	
 

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -8,10 +7,11 @@
 
 #include "Gallery.hpp"
 
+using std::cout;
+using std::endl;
+
 Gallery::Gallery()
 {
-	std::cout << "FaceRecognition: creating the Gallery ..." << std::endl;
-	
 	// Initialization of the vector
 	this->gallery =	std::vector<Person>();
 		
@@ -21,10 +21,10 @@ Gallery::Gallery()
 	sqlError = sqlite3_open("FacesDatabase.db", &db);
 	
 	if (sqlError){
-		std::cout << "Error: can't open the database" << std::endl;
+		cout << "Error: can't open the database" << endl;
 	}
 	else {
-		std::cout << "FaceRecognition: database opened successfully" << std::endl;
+		cout << "FaceFramboise: database opened successfully" << endl;
 		
 		// Retrieve all the database
 		const char *zSql = "SELECT * FROM faces;";
@@ -32,40 +32,41 @@ Gallery::Gallery()
 		
 		sqlError = sqlite3_prepare(db, zSql, -1, &pStmt, 0);
 		
-		std::cout << "Debug: sqlError = " << sqlError << std::endl; 
 		if (sqlError != SQLITE_OK){
-			std::cout << "Error: preparing statement" << std::endl;
+			cout << "Error: preparing statement failed" << endl;
 		}
 		
 		// Keep calling sqlite3_step until it returned something other than SQLITE_ROW
 		while ((sqlError = sqlite3_step(pStmt)) == SQLITE_ROW){
-			
-			std::cout << "Debug: sqlError = " << sqlError << std::endl;
 			
 			// Load the firstname and lastname
 			std::string firstname((const char *)sqlite3_column_text(pStmt, 1));
 			std::string lastname((const char *)sqlite3_column_text(pStmt, 2));
 			
 			// Load the histogram
+			std::string filename((const char *)sqlite3_column_text(pStmt, 3));
+			cout << "Debug: histogram filename = " << filename << endl;
+			
 			Histogram h;
+			/*
 			char *pzBlob; // Pointer to the retrieved blob 
 			int sizeOfBlob;
 			
 			sizeOfBlob = sqlite3_column_bytes(pStmt, 3);
-			std::cout << "Debug: sizeOfBlob = " << sizeOfBlob << std::endl;
+			cout << "Debug: sizeOfBlob = " << sizeOfBlob << endl;
 			pzBlob = (char *) malloc(sizeOfBlob); // essayer void *
 			memcpy(pzBlob, sqlite3_column_blob(pStmt, 3), sizeOfBlob); // Free pzBlob ?
-			
-			//still in test
-			
+			*/
 			{
-				std::stringstream ss(pzBlob);
+				std::fstream fs(filename.c_str());
 				// Debug: display the stream retrieved from the database
-				//std::cout << ss.str() << std::endl << std::endl;
+				//cout << fs.str() << endl;
 				
-				boost::archive::text_iarchive ia (ss);
+				boost::archive::text_iarchive ia (fs);
 				ia >> h; // load the histogram
 			}
+			
+			cout << "Debug: in gallery constructor, histogram = " << endl << h.toString() << endl;
 			
 			Person p(firstname, lastname, h); // Constructeur de recopie par défault ? on risque pas de perde l'histo ?
 			
@@ -73,18 +74,14 @@ Gallery::Gallery()
 			gallery.push_back(p);
 		}
 		
-		if(sqlError == SQLITE_DONE){
-			std::cout << "Debug: SQLITE_DONE" << std::endl;
-		}
-		
 		// Finalize the statement
 		sqlError = sqlite3_finalize(pStmt);
 		
 		if (sqlError != SQLITE_OK){
-			std::cout << "Error: SQL query" << std::endl;
+			cout << "Error: SQL query" << endl;
 		}
 		else{
-			std::cout << "FaceRecognition: database loaded in the gallery" << std::endl;
+			cout << "FaceFramboise: database loaded in the gallery" << endl;
 		}
 		sqlite3_close(db);
 	}
@@ -98,19 +95,18 @@ Gallery::~Gallery()
 // Add a Person in the database, but not in the gallery
 int Gallery::addToDatabase(Person p)
 {
-	std::cout << "FaceRecognition: adding the face in the database ..." << std::endl;
+	cout << "FaceFramboise: adding the face in the database ..." << endl;
 	
-	sqlite3 *db;	//Database to insert data into
+	sqlite3 *db; // Database to insert data into
 
 	int sqlError = sqlite3_open("FacesDatabase.db", &db); //Open the database
 	
-	
 	if (sqlError != SQLITE_OK){
-		std::cout << "Error: can't open the database" << std::endl;
+		cout << "Error: can't open the database" << endl;
 		return sqlError;
 	}
 	else {
-		std::cout << "FaceRecognition: database opened successfully" << std::endl;
+		cout << "FaceFramboise: database opened successfully" << endl;
 		
 		const char *zSql = "INSERT INTO faces (firstname, lastname, histogram) VALUES (?, ?, ?);";
 		sqlite3_stmt *pStmt;
@@ -120,36 +116,32 @@ int Gallery::addToDatabase(Person p)
 			sqlError = sqlite3_prepare(db, zSql, -1, &pStmt, 0);
 		
 			if (sqlError != SQLITE_OK){
-				std::cout << "Error: SQL query" << std::endl;
+				cout << "Error: SQL query" << endl;
 				return sqlError;
 			}
-		
-			
-			//serialisation de l'histogramme
-			//encore en test !
 
 			Histogram h = p.getHistogram();
 			
-			// Serialization of the histogram in a stringstream
-			std::stringstream ss;
+			// Serialization of the histogram in a file stream
+			
+			std::stringstream ss_filename;
+			ss_filename << p.getFirstname() << p.getLastname() << ".histo";
+			
+			
+			std::fstream fs(ss_filename.str().c_str(), std::ios_base::out);
 			{
-				boost::archive::text_oarchive oa(ss);
+				boost::archive::text_oarchive oa(fs);
 				oa << h;
 			}
 
 			sqlite3_bind_text(pStmt, 1, p.getFirstname().c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_text(pStmt, 2, p.getLastname().c_str(), -1, SQLITE_STATIC);
-			int test = sqlite3_bind_blob(pStmt, 3, ss.str().data(), ss.str().size(), SQLITE_STATIC);
-			//essayer avec void *
-			std::cout << "Debug: test bind blob = " << test << std::endl;// bind blob OK
-			
-			std::cout << "Debug: size of blob string added = " << ss.str().size() << std::endl;
-			std::cout << "Debug: blob added = " << ss.str().data() << std::endl;
+			sqlite3_bind_text(pStmt, 3, ss_filename.str().c_str(), -1, SQLITE_STATIC);
 			
 			sqlError = sqlite3_step(pStmt);
-			
+			 
 			if(sqlError == SQLITE_DONE){
-				std::cout << "FaceRecognition: face added in the gallery" << std::endl;
+				cout << "FaceFramboise: face added in the database" << endl;
 			}
 			
 			sqlError = sqlite3_finalize(pStmt);
@@ -167,7 +159,9 @@ std::string Gallery::toString()
 	return "";
 }
 
-Person Gallery::search(Person p){
+Person Gallery::search(Person p)
+{
+	cout << "FaceFramboise: searching the closest Person in the gallery ..." << endl;
 	float dmin = p.getHistogram().distance(gallery.front().getHistogram());
 	float d = 0;
 	int indexClosest = 0;
@@ -176,7 +170,7 @@ Person Gallery::search(Person p){
 	for (std::vector<Person>::iterator it = gallery.begin() ; it != gallery.end() ; ++it){
 		
 		d = p.getHistogram().distance(it->getHistogram());
-		std::cout << "Debug: distance = " << d << std::endl;
+		cout << "Debug: distance = " << d << endl;
 		
 		if (d >= 0 && d < dmin){
 			dmin = d;
@@ -186,7 +180,7 @@ Person Gallery::search(Person p){
 		i++;
 	}
 	
-	std::cout << "Debug: distance min = " << dmin << ", index = " << indexClosest << std::endl;
+	cout << "Debug: distance min = " << dmin << ", index = " << indexClosest << endl;
 	
 	return gallery.at(indexClosest);
 }
