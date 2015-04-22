@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	}
 	else if(argc == 2){
 		// Load the image
-		frame = cv::imread(argv[1]);
+		frame = cv::imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE);
 		cout << "FaceFramboise: image loaded" << endl;
 		
 		/*
@@ -49,10 +49,18 @@ int main(int argc, char *argv[])
 		cv::waitKey(0);*/
 		
 		cout << "FaceFramboise: detecting the faces ..." << endl;
-		detectFaces(frame, faceCascade, faces);
+		//detectFaces(frame, faceCascade, faces);
+		
+		//pour le test de Feret :
+		
+		faces.push_back(frame);
+		cout << "Debug: size of vector = " << faces.size() << endl;
+		cv::imshow("test Feret", frame); // normalement size de frame = 130x150
+		cv::waitKey(1000);
 		
 		cout << "FaceFramboise: recognition of the faces ..." << endl;
 		recognitionFaces(gallery, faces);
+		
 	}
 	else{
 		cout << "FaceFramboise: too many arguments" << endl;

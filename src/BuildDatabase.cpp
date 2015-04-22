@@ -15,13 +15,13 @@ int main(int argc, char *argv[])
 	cout << "BuildDatabase: start" << endl;
 	
 	if(argc == 2){
-		cv::Mat image = cv::imread(argv[1],0);
+		cv::Mat image = cv::imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE); // load and convert to grey level
 		
 		if (image.rows == 150 && image.cols == 130){
 			cout << "BuildDatabase: correct size of the image" << endl;
 			
 			Histogram h(image);
-			Person p("701", "fb", h);
+			Person p("700", "fa", h);
 			
 			Gallery g;
 			//cout << g.toString() << endl;

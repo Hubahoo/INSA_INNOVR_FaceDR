@@ -22,11 +22,11 @@ int detectFaces(cv::Mat frame, cv::CascadeClassifier faceCascade, std::vector<cv
 	}
 
 	cv::Mat frame_gray;
-	cvtColor(frame, frame_gray, CV_BGR2GRAY);
+	cvtColor(frame, frame_gray, CV_BGR2GRAY); // convertion en niveau de gris. que se passe-t-il quand l'image est déja en niveau de gris ?
 	equalizeHist(frame_gray, frame_gray);	
 	
 	// Detect the faces in the frame
-	faceCascade.detectMultiScale(frame_gray, roi, SCALE, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30,30));
+	faceCascade.detectMultiScale(frame_gray, roi, SCALE, 2, 0, cv::Size(30,30), frame_gray.size());
 	faces.clear();
 
 	for(std::vector<cv::Rect>::iterator it = roi.begin(); it != roi.end(); ++it){
@@ -50,7 +50,13 @@ int detectFaces(cv::Mat frame, cv::CascadeClassifier faceCascade, std::vector<cv
 		cv::waitKey(2000);
 		
 		faces.push_back(temp_face_resized);
+		cout << "ROI = " << temp_face.rows << "x" <<temp_face. cols << endl;
+		
+		cout << "ROI resized = " << temp_face_resized.rows << "x" <<temp_face_resized. cols << endl;
+		cv::imshow("detection resize", temp_face_resized);
+		cv::waitKey(2000);
 	}
+	
 	
 	//cv::imshow("frame", frame);
 	//cv::waitKey(2000);
