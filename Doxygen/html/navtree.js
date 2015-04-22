@@ -15,7 +15,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -24,7 +23,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_face_recognition_8cpp.html"
+"_build_database_8cpp.html"
 ];
 
 var navTreeSubIndices = new Array();
