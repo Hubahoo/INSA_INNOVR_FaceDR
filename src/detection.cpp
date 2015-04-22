@@ -23,7 +23,7 @@ int detectFaces(cv::Mat frame, cv::CascadeClassifier faceCascade, std::vector<cv
 
 	cv::Mat frame_gray;
 	cvtColor(frame, frame_gray, CV_BGR2GRAY); // convertion en niveau de gris. que se passe-t-il quand l'image est déja en niveau de gris ?
-	equalizeHist(frame_gray, frame_gray);	
+	//equalizeHist(frame_gray, frame_gray);	
 	
 	// Detect the faces in the frame
 	faceCascade.detectMultiScale(frame_gray, roi, SCALE, 2, 0, cv::Size(30,30), frame_gray.size());

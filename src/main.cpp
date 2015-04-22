@@ -40,7 +40,15 @@ int main(int argc, char *argv[])
 	}
 	else if(argc == 2){
 		// Load the image
-		frame = cv::imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE);
+		
+		frame = cv::imread(argv[1]);
+		///////////////////
+		// Attention ici, on ne pas convertir directement avec le flag CV_LOAD_IMAGE_GRAYSCALE
+		// Sinon ca plante dans la fonction detectFaces pendant la convertion de couleur à niveau de gris
+		// On ne doit convertir qu'une seule fois en niveau (mais il faut le faire obligatoirement sinon les
+		// calcul sur les LBP et les histogram sont faux)
+		///////////////////
+		
 		cout << "FaceFramboise: image loaded" << endl;
 		
 		/*
@@ -49,14 +57,8 @@ int main(int argc, char *argv[])
 		cv::waitKey(0);*/
 		
 		cout << "FaceFramboise: detecting the faces ..." << endl;
-		//detectFaces(frame, faceCascade, faces);
+		detectFaces(frame, faceCascade, faces);
 		
-		//pour le test de Feret :
-		
-		faces.push_back(frame);
-		cout << "Debug: size of vector = " << faces.size() << endl;
-		cv::imshow("test Feret", frame); // normalement size de frame = 130x150
-		cv::waitKey(1000);
 		
 		cout << "FaceFramboise: recognition of the faces ..." << endl;
 		recognitionFaces(gallery, faces);
