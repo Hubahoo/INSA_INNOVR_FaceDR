@@ -7,7 +7,6 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -24,7 +23,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_face_recognition_8cpp.html"
+"_build_database_8cpp.html"
 ];
 
 var navTreeSubIndices = new Array();

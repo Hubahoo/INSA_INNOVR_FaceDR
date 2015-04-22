@@ -4,7 +4,11 @@
 #include <string>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
-#include <opencv2/opencv.hpp>
+#include <opencv2/objdetect/objdetect.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+
+#include "define.hpp"
 
 class Histogram
 {
@@ -15,15 +19,6 @@ public:
 
 	Histogram& operator=(Histogram const& h);
 
-	// Declaration of constants
-	static const int P;
-	static const int R;
-
-	static const int K;
-	static const int NB_OF_REGIONS;
-	static const int REGION_WIDTH;
-	static const int REGION_HEIGHT;
-
 	void saveHistogram(std::string filename);
 	float distance(Histogram h);
 	std::string toString();
@@ -32,7 +27,7 @@ public:
 private:
 	friend class boost::serialization::access;
 	
-	int tab[1][256];// à changer
+	int tab[NB_OF_REGIONS][256];
 	unsigned char computeLBP(cv::Mat image, int x, int y);
 	
 	template<class Archive>

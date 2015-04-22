@@ -3,11 +3,16 @@
 /Release/*
 /Debug/*
 
+/BuildDatabase
+/FaceFramboise
+
 /CMakeCache.txt
 /CMakeFikes/*
 /cmake_install.cmake
 /Makefile
+
 /*~
+/src/*~
 
 /Doxygen/latex/*
 

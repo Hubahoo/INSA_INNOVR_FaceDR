@@ -4,15 +4,7 @@
 #include <fstream>
 
 #include "Histogram.hpp"
-
-// Initialization of constants
-const int Histogram::P = 8;
-const int Histogram::R = 2;
-
-const int Histogram::K = 1;
-const int Histogram::NB_OF_REGIONS = K*K;
-const int Histogram::REGION_WIDTH = 130;//26
-const int Histogram::REGION_HEIGHT = 150;//30
+#include "define.hpp"
 
 Histogram::Histogram()
 {
@@ -36,7 +28,7 @@ Histogram::Histogram(cv::Mat image)
 		}
 	}
 	
-	std::cout << "FaceRecognition: computing Local Binary Patterns ..." << std::endl;
+	std::cout << "FaceFramboise: computing Local Binary Patterns ..." << std::endl;
 	
 	for (int i = R ; i < width - R ; i++){
 		for(int j = R ; j < height - R ; j++){

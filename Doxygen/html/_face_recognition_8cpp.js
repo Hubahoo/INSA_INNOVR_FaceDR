@@ -1,4 +1,4 @@
 var _face_recognition_8cpp =
 [
-    [ "FaceRecognition", "_face_recognition_8cpp.html#a36b01f5f5aacef697c628785a30613fc", null ]
+    [ "closestPerson", "_face_recognition_8cpp.html#ab6e83a981258a372d2fdbd97466e6042", null ]
 ];

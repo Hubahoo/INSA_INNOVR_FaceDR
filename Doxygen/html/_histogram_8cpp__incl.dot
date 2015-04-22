@@ -19,5 +19,12 @@ digraph "src/Histogram.cpp"
   Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="boost/archive/text\l_iarchive.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node6 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="opencv2/opencv.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 [label="opencv2/objdetect/objdetect.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="opencv2/highgui/highgui.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="opencv2/imgproc/imgproc.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="define.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$define_8hpp.html"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
